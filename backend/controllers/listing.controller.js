@@ -6,7 +6,8 @@ import asyncHandler from '../utils/asyncHandler.js';
 import MediaOwner from '../models/mediaOwner.models.js';
 
 export const addListing = asyncHandler(async (req, res) => {
-    const { location, size, price, isAvailable, minBooking, availableFrom } = req.body;
+    const { location, size, price, isAvailable, minBooking, availableFrom, latitude, longitude } =
+        req.body;
     const owner = await MediaOwner.findById(req.user.id);
     if (!owner) {
         throw new apiError(404, 'Media owner not found');
@@ -20,6 +21,8 @@ export const addListing = asyncHandler(async (req, res) => {
         isAvailable,
         minBooking,
         availableFrom,
+        latitude,
+        longitude,
     });
     await newListing.save();
 

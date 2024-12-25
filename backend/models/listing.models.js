@@ -15,6 +15,8 @@ const listingSchema = new Schema({
     isAvailable: { type: Boolean, required: true },
     minBooking: { type: Date, required: true },
     availableFrom: { type: Date, required: true },
+    latitude: { type: mongoose.Types.Decimal128 },
+    longitude: { type: mongoose.Types.Decimal128 },
 });
 
 // Create the model
